@@ -12,7 +12,6 @@ function App() {
     <div >
       <Navbar /> 
       <Login />
-      {localStorage.getItem('token') !== null ? <Route exact path="/profile" component={Profile}/> : <h1> You Aren't Logged In!</h1> }
       
     </div>
   );
