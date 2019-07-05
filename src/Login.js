@@ -87,9 +87,7 @@ class Login extends React.Component{
         })
         .then(res => res.json())
         .then(data =>{
-            localStorage.setItem("token", data.token)
-            window.history.pushState({urlPath:'/profile'}, '', '/profile')
-            this.forceUpdate()
+           
         } )
 
     }
