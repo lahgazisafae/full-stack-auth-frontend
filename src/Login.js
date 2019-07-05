@@ -77,7 +77,7 @@ class Login extends React.Component{
 
         let userObject = {username: this.state.user.username,
             password:this.state.user.password}
-            console.log(userObject)
+
         fetch('http://localhost:3000/login',{
             method: 'POST',
             headers:{
@@ -87,9 +87,18 @@ class Login extends React.Component{
         })
         .then(res => res.json())
         .then(data =>{
-           
-        } )
+            if (data.errors){
+                console.log("Your username or password is incorrect.")
+                this.setState({errors: data.errors}, ()=> console.log("errors", this.state.errors))
+            }
+            else{
+                localStorage.setItem('token', data.token)
+                window.history.pushState({url: "/profile"},"", "/profile")
+                this.forceUpdate()
+            }
 
+        } )
+        e.target.parentElement.reset()
     }
 
     

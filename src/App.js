@@ -12,7 +12,7 @@ function App() {
     <div >
       <Navbar /> 
       <Login />
-      
+      {localStorage.getItem('token') === null ? <h1>You are not Logged in!</h1>: <Route path="/profile" component={Profile}></Route> }
     </div>
   );
 }
